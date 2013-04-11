@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="Description" content="Records of Sachin Tendulkar in ODI's" />
+    <meta name="Keywords" content="Sachin Tendulkar, God of Cricket, Sachin Retirement, Sachin 100 Centuries, Sachin Against... " />
+
+
+    <title>Sachin Tendulkar in 468 ODI's</title>
+    <link href="jquery-wijmo.css" rel="stylesheet" type="text/css" />
+    <!--jQuery References-->
+    <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="jquery-ui.min.js" type="text/javascript"></script>
+    <!--Wijmo Widgets CSS-->
+    <link href="jquery.wijmo-complete.all.2.0.0.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body
+        {
+            font-size: 75%;
+            background: url('sachin.jpg') repeat -162px -72px;
+
+        }
+        h3
+        {
+            margin: 0;
+            padding: .4em;
+        }
+        .container
+        {
+            width: 1160px;
+            margin: 0 auto;
+        }
+        .split-left
+        {
+            width: 100%;
+            margin: 0 2px 0 0;
+            padding: 0;
+            float: left;
+        }
+       
+        .section-vert
+        {
+            clear: left;
+            margin-top: 4px;
+        }
+        .wijdata-type-number
+        {
+            font-family: Georgia;
+        }
+        #tagPie,  #tagPie4
+        {
+            height: 700px;
+            padding: 0;
+            margin: 0;
+        }
+        #siteBar
+        {
+            height: 400px;
+            padding: 0;
+            margin: 0;
+        }
+        #tagLines
+        {
+            height: 280px;
+            clear: left;
+            padding: 0;
+            margin: 0;
+        }
+
+      #discus{width: 1100px;background: #fff;margin: 0 auto;padding: 30px;border-radius: 1%;margin-top: 20px;}
+.share{float:right;}
+h3{height: 25px;}
+    </style>
+    <!--Wijmo Widgets JavaScript-->
+    <script src="jquery.wijmo-open.all.2.0.0.min.js" type="text/javascript"></script>
+    <script src="jquery.wijmo-complete.all.2.0.0.min.js" type="text/javascript"></script>
+
+  
+    
+    <script type="text/javascript">
+        //demo page script
+
+
+        $(document).ready(function () {
+          
+           $.getJSON("teamsjson.json", function (data) {
+                
+                var series = [];
+                for (var i = 0; i < 14; i++) {
+                    var slice = {
+                        label: data.tags[i].name,
+                        legendEntry: true,
+                        data: data.tags[i].count, 
+                        offset: 0
+                    };
+                    series.push(slice);
+                }
+                $("#tagPie").wijpiechart({
+                    textStyle: { fill: "#ffffff", "font-family": "Georgia", "font-size": "12pt", stroke: "none" },
+                    chartLabelStyle: { fill: "#ffffff", "font-family": "Georgia", "font-size": "14pt", stroke: "none" },
+                    hint: {
+                        contentStyle: { "font-family": "Georgia", "font-size": "24pt", stroke: "none" },
+                        content: function () {
+                            return this.data.label + " : " + this.value;
+                        }
+                    },
+                    header: {
+                        text: "Runs Against Each Country",
+                        visible: false
+                    },
+                    seriesList: series, seriesStyles: [{
+                        fill: "180-#ffab0a-#feda8e", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-rgb(255,102,0)-rgb(255,117,25)", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "180-#006634-#2f8159", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "180-#0067d0-#98c2ec", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "150-#037402-#82b982", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "180-#000-#fff", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "360-#0067d0-#257dd7", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#000000-#656565", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#000062-#aaabca", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#238D4F-#5BA479", stroke: "#FFFFFF", "stroke-width": "2"
+                    },  {
+                        fill: "90-#761819-#853033", stroke: "#FFFFFF", "stroke-width": "2"
+                    },  {
+                        fill: "90-#003c00-#4c7a4c", stroke: "#FFFFFF", "stroke-width": "2"
+                    },
+                    {
+                        fill: "90-#21844b-#59a67a", stroke: "#FFFFFF", "stroke-width": "2"
+                    },
+                    {
+                        fill: "90-#db0100-#df3535", stroke: "#FFFFFF", "stroke-width": "2"
+                    }]
+
+                });
+            }); 
+
+
+
+
+            
+                $.getJSON("runsineachcountry.json", function (data) {
+                var statNames = ["Australia", "Bangladesh", "Canada", "England","India","Kenya","Malaysia","New Zealand","Pakistan","Singapore","South Africa","Sri Lanka","UAE","West Indies", "Zimbabwe"];
+                var statVals = [data.runs[0].Australia, data.runs[0].Bangladesh, data.runs[0].Canada, data.runs[0].England,  data.runs[0].India,
+                                 data.runs[0].Kenya,  data.runs[0].Malaysia,  data.runs[0].New_Zealand,  data.runs[0].Pakistan,  data.runs[0].Singapore, data.runs[0].South_Africa, data.runs[0].Sri_Lanka, data.runs[0].UAE, data.runs[0].West_Indies, data.runs[0].Zimbabwe];
+                $("#siteBar").wijbarchart({
+                    textStyle: { fill: "#242122", "font-family": "Georgia", "font-size": "12pt", stroke: "none" },
+                    chartLabelStyle: { fill: "#242122", "font-family": "Georgia", "font-size": "14pt", stroke: "none" },
+                    horizontal: false,
+                    axis: {
+                        y: {
+                            text: ""
+                        },
+                        x: {
+                            text: "",
+                            labels: {
+                                textAlign: "near",
+                                style: {
+                                    rotation: -45
+                                }
+                            }
+                        }
+                    },
+                    hint: {
+                        contentStyle: { "font-family": "Georgia", "font-size": "24pt", stroke: "none" },
+                        content: function () {
+                            return this.x + ': ' + this.y + '';
+                        }
+                    },
+                    header: {
+                        text: "Sachin Stats",
+                        visible: false
+                    },
+                    seriesList: [
+                                {
+                                    label: "Stats",
+                                    legendEntry: false,
+                                    fitType: "spline",
+                                    data: {
+                                        x: statNames,
+                                        y: statVals
+                                    }
+                                }
+                            ],
+                    seriesStyles: [
+                        { fill: "#00A6DD", stroke: "#FFFFFF" }
+                    ]
+                });
+            });
+           
+
+
+
+
+
+
+                 $.getJSON("runsineachgroundinindia.json", function (data) {
+                var statNames = ["Striker(Opener)", "Non Striker(Opener)", "One Down", "Two Down","Three Down","Four Down","Five Down"];
+                var statVals = [data.Striker, data.Non_Striker, data.One_Down, data.Two_Down,  data.Three_Down,
+                                 data.Four_Down,  data.Five_Down];
+                $("#siteBar3").wijbarchart({
+                    textStyle: { fill: "#242122", "font-family": "Georgia", "font-size": "12pt", stroke: "none" },
+                    chartLabelStyle: { fill: "#242122", "font-family": "Georgia", "font-size": "14pt", stroke: "none" },
+                    horizontal: false,
+                    axis: {
+                        y: {
+                            text: ""
+                        },
+                        x: {
+                            text: "",
+                            labels: {
+                                textAlign: "near",
+                                style: {
+                                    rotation: -45
+                                }
+                            }
+                        }
+                    },
+                    hint: {
+                        contentStyle: { "font-family": "Georgia", "font-size": "24pt", stroke: "none" },
+                        content: function () {
+                            return this.x + ': ' + this.y + '';
+                        }
+                    },
+                    header: {
+                        text: "Sachin Tendulkar Stats",
+                        visible: false
+                    },
+                    seriesList: [
+                                {
+                                    label: "Stats",
+                                    legendEntry: false,
+                                    fitType: "spline",
+                                    data: {
+                                        x: statNames,
+                                        y: statVals
+                                    }
+                                }
+                            ],
+                    seriesStyles: [
+                        { fill: "#00A6DD", stroke: "#FFFFFF" }
+                    ]
+                });
+            });
+            
+
+
+
+
+
+
+
+                $.getJSON("centuries.json", function (data) {
+                
+                var series = [];
+                for (var i = 0; i < 11; i++) {
+                    var slice = {
+                        label: data.countries[i].name,
+                        legendEntry: true,
+                        data: data.countries[i].count, 
+                        offset: 0
+                    };
+                    series.push(slice);
+                }
+                $("#tagPie4").wijpiechart({
+                    textStyle: { fill: "#ffffff", "font-family": "Georgia", "font-size": "12pt", stroke: "none" },
+                    chartLabelStyle: { fill: "#ffffff", "font-family": "Georgia", "font-size": "14pt", stroke: "none" },
+                    hint: {
+                        contentStyle: { "font-family": "Georgia", "font-size": "24pt", stroke: "none" },
+                        content: function () {
+                            return this.data.label + " : " + this.value;
+                        }
+                    },
+                    header: {
+                        text: "49 Centuries of Sachin in ODI's",
+                        visible: false
+                    },
+                    seriesList: series, seriesStyles: [{
+                        fill: "180-#ffab0a-#feda8e", stroke: "#FFFFFF", "stroke-width": "2"
+                    },{
+                        fill: "180-#006634-#30825a", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "180-#007602-#92c292", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#0067d0-#98c2ec", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#1d1d1d-#a9a9a9", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "180-#761819-#a66a6c", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#d70101-#5b845a", stroke: "#FFFFFF", "stroke-width": "2"
+                    }, {
+                        fill: "90-#000062-#5BA479", stroke: "#FFFFFF", "stroke-width": "2"
+                    },  {
+                        fill: "90-#017101-#1d7044", stroke: "#FFFFFF", "stroke-width": "2"
+                    },  {
+                        fill: "90-#fff-rgb(50,15,225)", stroke: "#FFFFFF", "stroke-width": "2"
+                    },
+                    {
+                        fill: "90-#003c00-#719372", stroke: "#FFFFFF", "stroke-width": "2"
+                    } ]
+
+                });
+            }); 
+            
+
+
+        
+        
+        });
+    </script>
+    <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "755b78d0-9c76-4f1c-8042-b26421c4264c"});</script>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'codeforbrowser'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34341523-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    
+</head>
+<body>
+   
+    <div id="page">
+     
+    <div class="container">
+        <div class="rotate">
+            <h1 class="ui-widget">
+                </h1>
+            <div class="ui-helper-clearfix">
+               
+                    <div class="ui-widget ui-widget-header ui-corner-top">
+                        <h3 class="first">
+                            Runs Against Each Country in ODI's
+                            <span class="share">
+                             <span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_googleplus_hcount' displayText='Google +'></span>
+
+<span class='st_email_hcount' displayText='Email'></span>
+</span>
+                        </h3>
+                    </div>
+                     <div class="block first-block">
+                    <div id="tagPie" class="ui-widget ui-widget-content ui-corner-bottom">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+   
+        <!-- -->
+       
+        <div  class="rotate">
+            <h1 class="ui-widget">
+                </h1>
+            <div class="ui-helper-clearfix">
+                
+                    <div class="ui-widget ui-widget-header ui-corner-top">
+                        <h3 class="sec">
+                            Centuries Against Each Country in ODI's
+                            <span class="share">
+                            <span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_googleplus_hcount' displayText='Google +'></span>
+
+<span class='st_email_hcount' displayText='Email'></span>
+</span>
+                        </h3>
+                    </div>
+                    <div class="block">  
+                    <div id="tagPie4" class="ui-widget ui-widget-content ui-corner-bottom">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+      
+       
+            <div class="rotate">
+            <h1 class="ui-widget">
+                </h1>
+            <div class="ui-helper-clearfix">
+               
+                <div class="runs-in-country">
+                    <div class="ui-widget ui-widget-header ui-corner-top">
+                        <h3 class="third">
+                            Runs Scored by Sachin Batting at Various Positions in ODI's
+                            <span class="share">
+                            <span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_googleplus_hcount' displayText='Google +'></span>
+
+<span class='st_email_hcount' displayText='Email'></span>
+</span>
+                        </h3>
+                    </div>
+                     <div class="block">
+                    <div id="siteBar3" class="ui-widget ui-widget-content ui-corner-bottom">
+                    </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+   
+        <div class="rotate">
+            <h1 class="ui-widget">
+                </h1>
+            <div class="ui-helper-clearfix">
+               
+                <div class="runs-in-country">
+                    <div class="ui-widget ui-widget-header ui-corner-top">
+                        <h3 class="fourth">
+                            Runs in Each Country in ODI's
+                           <span class="share">
+                           <span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_googleplus_hcount' displayText='Google +'></span>
+
+<span class='st_email_hcount' displayText='Email'></span>
+</span>
+                        </h3>
+                    </div>
+                    <div class="block">
+                    <div id="siteBar" class="ui-widget ui-widget-content ui-corner-bottom">
+                    </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+  
+    </div>
+    <div id="discus">
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'codeforbrowser'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    <div style=""><em>Credits For Building this Site go to:</em></div>
+    <div id="credits"><a href="http://en.wikipedia.org/wiki/Sachin_Tendulkar" target="_blank">Sachin Tendulkar</a> for Inspiration, <a href="http://wijmo.com/">Wijmo</a> for Providing Technical Platform, <a href="http://www.cricinfo.com" target="_blank">Cricinfo</a> for Stats and People like you for Posting Comments and Sharing.</div>
+</div>
+    </div>
+</body>
+</html>

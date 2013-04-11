@@ -1,0 +1,75 @@
+{
+  "total": 18426,
+  "page": 1,
+  "pagesize": 10,
+  "tags": [
+    {
+      "name": "Australia",
+      "count": 3077
+    },
+    {
+      "name": "Bermuda",
+      "count": 57
+      
+    },
+    {
+      "name": "South Africa",
+      "count": 2001
+    },
+     {
+      "name": "Namibia",
+      "count": 152
+      
+    },
+    {
+      "name": "Pakistan",
+      "count": 2526
+    },
+     {
+      "name": "Netherlands",
+      "count": 79      
+    },
+    {
+      "name": "Sri Lanka",
+      "count": 3113
+    },
+    {
+      "name": "New Zealand",
+      "count": 1750
+    },
+    {
+      "name": "England",
+      "count": 1455
+    },
+    {
+      "name": "UAE",
+      "count": 81      
+    },
+    {
+      "name": "West Indies",
+      "count": 1573
+    },
+    {
+      "name": "Bangladesh",
+      "count": 496
+    },
+    {
+      "name": "Kenya",
+      "count": 647
+      
+    },
+   
+    {
+      "name": "Zimbabwe",
+      "count": 1377
+      
+    },
+    {
+      "name": "Ireland",
+      "count": 42
+      
+    }
+   
+    
+  ]
+}
